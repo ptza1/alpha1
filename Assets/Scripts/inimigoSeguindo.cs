@@ -7,6 +7,7 @@ public class inimigoSeguindo : MonoBehaviour
 {
     NavMeshAgent agente;
     public Transform player;
+    float offset = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,11 @@ public class inimigoSeguindo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agente.SetDestination(player.position);
+        
+        if (Vector3.Distance(player.position, this.transform.position) >= offset)
+        {
+            agente.SetDestination(player.position);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
